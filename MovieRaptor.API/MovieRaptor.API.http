@@ -1,0 +1,6 @@
+@MovieRaptor.API_HostAddress = http://localhost:5097
+
+GET {{MovieRaptor.API_HostAddress}}/api/movie/{{$randomInt}}
+Accept: application/json
+
+###
