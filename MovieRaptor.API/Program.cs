@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddApplicationDependencies();
-builder.Services.AddSingleton<IMovieRepository>(repo => new TMDbMovieRepository(new TMDbClient("")));
+builder.Services.AddSingleton<IMovieRepository>(repo => new TMDbMovieRepository(new TMDbClient(builder.Configuration["TMDbApiKey"])));
 
 var app = builder.Build();
 
