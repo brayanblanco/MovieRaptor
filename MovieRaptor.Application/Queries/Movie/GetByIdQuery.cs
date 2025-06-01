@@ -4,7 +4,7 @@ using MovieRaptor.Domain.Movies;
 
 namespace MovieRaptor.Application.Queries.Movie
 {
-    public record GetByIdMovieDto(int Id, string Title);
+    public record GetByIdMovieDto(int Id, string Title, string OriginalTitle, string TagLine);
 
     public record GetByIdQuery(int Id) : IRequest<GetByIdMovieDto>;
 
