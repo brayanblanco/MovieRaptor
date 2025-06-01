@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using MovieRaptor.Application.Users.User.Queries;
 
-namespace MovieRaptor.Application.Queries.User
+namespace MovieRaptor.Application.Users.User
 {
     public class UserProfile : Profile
     {

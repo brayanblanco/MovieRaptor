@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
-using MovieRaptor.Domain.Movies;
+using MovieRaptor.Domain.Users;
 
-namespace MovieRaptor.Application.Queries.User
+namespace MovieRaptor.Application.Users.User.Queries
 {
     public record GetByIdUserDto(Guid Id, string Name);
 
@@ -10,11 +10,11 @@ namespace MovieRaptor.Application.Queries.User
 
     public record MovieDto(int Id, string Title);
 
-    public class GetByIdQueryHandler(IMovieRepository movieRepository, IMapper mapper) : IRequestHandler<GetByIdQuery, GetByIdUserDto>
+    public class GetByIdQueryHandler(IUserRepository userRepository, IMapper mapper) : IRequestHandler<GetByIdQuery, GetByIdUserDto>
     {
         public async Task<GetByIdUserDto> Handle(GetByIdQuery request, CancellationToken cancellationToken)
         {
-            var movie = await movieRepository.GetByIdAsync(request.Id, cancellationToken);
+            var movie = await userRepository.GetByIdAsync(request.Id, cancellationToken);
 
             return mapper.Map<GetByIdUserDto>(movie);
         }

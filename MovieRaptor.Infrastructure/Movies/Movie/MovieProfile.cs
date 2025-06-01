@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace MovieRaptor.Infrastructure.Movie
+namespace MovieRaptor.Infrastructure.Movies.Movie
 {
     public class SearchResultProfile : Profile
     {

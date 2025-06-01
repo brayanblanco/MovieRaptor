@@ -2,7 +2,7 @@
 using MediatR;
 using MovieRaptor.Domain.Movies;
 
-namespace MovieRaptor.Application.Queries.Movie
+namespace MovieRaptor.Application.Movies.Movie.Queries
 {
     public record GetByIdMovieDto(int Id, string Title, string OriginalTitle, string TagLine);
 

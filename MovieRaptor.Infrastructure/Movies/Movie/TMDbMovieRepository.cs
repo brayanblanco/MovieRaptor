@@ -3,7 +3,7 @@ using MovieRaptor.Domain.Movies;
 using MovieRaptor.Domain.Shared;
 using TMDbLib.Client;
 
-namespace MovieRaptor.Infrastructure.Movie
+namespace MovieRaptor.Infrastructure.Movies.Movie
 {
     public class TMDbMovieRepository(TMDbClient Client, IMapper Mapper) : IMovieRepository
     {

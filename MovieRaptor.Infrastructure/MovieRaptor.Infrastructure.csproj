@@ -16,4 +16,8 @@
     <ProjectReference Include="..\MovieRaptor.Domain\MovieRaptor.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Users\User\" />
+  </ItemGroup>
+
 </Project>

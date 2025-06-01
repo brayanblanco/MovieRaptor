@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MovieRaptor.Application.Queries.Movie;
+using MovieRaptor.Application.Movies.Movie.Queries;
 using MovieRaptor.Domain.Shared;
 
 namespace MovieRaptor.Infrastructure.Shared

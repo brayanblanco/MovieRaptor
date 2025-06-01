@@ -3,7 +3,7 @@ using MediatR;
 using MovieRaptor.Domain.Movies;
 using MovieRaptor.Domain.Shared;
 
-namespace MovieRaptor.Application.Queries.Movie
+namespace MovieRaptor.Application.Movies.Movie.Queries
 {
     public record GenericSearchMovieDto(int Id, string Title);
 

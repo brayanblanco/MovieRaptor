@@ -1,7 +1,7 @@
 using MovieRaptor.Application;
 using MovieRaptor.Domain.Movies;
 using MovieRaptor.Infrastructure;
-using MovieRaptor.Infrastructure.Movie;
+using MovieRaptor.Infrastructure.Movies.Movie;
 using TMDbLib.Client;
 
 var builder = WebApplication.CreateBuilder(args);
