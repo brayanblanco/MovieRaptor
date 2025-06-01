@@ -1,8 +1,10 @@
-﻿using MovieRaptor.Domain.Shared.Interfaces;
+﻿using MovieRaptor.Domain.Shared;
 
 namespace MovieRaptor.Domain.Movies
 {
-    public interface IMovieRepository : IReadRepository<Movie> 
+    public interface IMovieRepository 
     {
+        Task<SearchResult<Movie>> GenericSearchAsync(string query, int page, CancellationToken cancellationToken);
+        Task<Movie> GetByIdAsync(int id, CancellationToken cancellationToken);
     }
 }

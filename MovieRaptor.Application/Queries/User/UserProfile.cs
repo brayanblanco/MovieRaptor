@@ -7,7 +7,6 @@ namespace MovieRaptor.Application.Queries.User
         public UserProfile() 
         {
             CreateMap<Domain.Users.User, GetByIdUserDto>();
-            CreateMap<Domain.Users.User, GenericSearchUserDto>();
         }
     }
 }
