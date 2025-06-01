@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.5" />
     <PackageReference Include="TMDbLib" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MovieRaptor.Application\MovieRaptor.Application.csproj" />
     <ProjectReference Include="..\MovieRaptor.Domain\MovieRaptor.Domain.csproj" />
   </ItemGroup>
 

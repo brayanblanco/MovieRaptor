@@ -12,10 +12,7 @@ namespace MovieRaptor.Application.Queries.Movie
     {
         public async Task<MovieDto> Handle(GetByIdQuery request, CancellationToken cancellationToken)
         {
-            var movie = await movieRepository.GetMovieByIdAsync(request.Id);
-
-            if (movie == null)
-                return null;
+            var movie = await movieRepository.GetMovieByIdAsync(cancellationToken, request.Id);
 
             return mapper.Map<MovieDto>(movie);
         }

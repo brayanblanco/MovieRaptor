@@ -18,5 +18,12 @@ namespace MovieRaptor.API.Controllers
             return Ok(movie);
         }
 
+        [HttpGet("search/{query}/{page?}")]
+        public async Task<IActionResult> Search(string query, int page = 0)
+        {
+            var movies = await _mediator.Send(new GenericSearchQuery(query, page));
+
+            return Ok(movies);
+        }
     }
 }
