@@ -1,5 +1,5 @@
 using MovieRaptor.Application;
-using MovieRaptor.Domain.Interfaces;
+using MovieRaptor.Domain.Movies;
 using MovieRaptor.Infrastructure;
 using MovieRaptor.Infrastructure.Movie;
 using TMDbLib.Client;

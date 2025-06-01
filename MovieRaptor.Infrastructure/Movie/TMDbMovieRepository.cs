@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MovieRaptor.Domain.Interfaces;
+using MovieRaptor.Domain.Movies;
 using MovieRaptor.Domain.Shared;
 using TMDbLib.Client;
 
@@ -7,18 +7,18 @@ namespace MovieRaptor.Infrastructure.Movie
 {
     public class TMDbMovieRepository(TMDbClient Client, IMapper Mapper) : IMovieRepository
     {
-        public async Task<SearchResult<Domain.Entities.Movie>> GenericSearchAsync(CancellationToken cancellationToken, string query, int page = 0)
+        public async Task<SearchResult<Domain.Movies.Movie>> GenericSearchAsync(string query, int page, CancellationToken cancellationToken)
         {
             var movies = await Client.SearchMovieAsync(query, page, false, cancellationToken: cancellationToken);
             
-            return Mapper.Map<SearchResult<Domain.Entities.Movie>>(movies);
+            return Mapper.Map<SearchResult<Domain.Movies.Movie>>(movies);
         }
 
-        public async Task<Domain.Entities.Movie> GetMovieByIdAsync(CancellationToken cancellationToken, int id)
+        public async Task<Domain.Movies.Movie> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var movie = await Client.GetMovieAsync(id);
+            var movie = await Client.GetMovieAsync(id, cancellationToken: cancellationToken);
 
-            return Mapper.Map<Domain.Entities.Movie>(movie);
+            return Mapper.Map<Domain.Movies.Movie>(movie);
         }
     }
 }

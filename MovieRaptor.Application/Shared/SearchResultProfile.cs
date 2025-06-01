@@ -8,7 +8,7 @@ namespace MovieRaptor.Infrastructure.Shared
     {
         public SearchResultProfile()
         {
-            CreateMap<SearchResult<Domain.Entities.Movie>, SearchResult<MovieDto>>();
+            CreateMap<SearchResult<Domain.Movies.Movie>, SearchResult<GenericSearchMovieDto>>();
         }
     }
 }

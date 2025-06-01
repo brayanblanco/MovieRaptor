@@ -6,7 +6,8 @@ namespace MovieRaptor.Application.Queries.Movie
     {
         public MovieProfile() 
         {
-            CreateMap<Domain.Entities.Movie, MovieDto>();
+            CreateMap<Domain.Movies.Movie, GetByIdMovieDto>();
+            CreateMap<Domain.Movies.Movie, GenericSearchMovieDto>();
         }
     }
 }

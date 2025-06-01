@@ -9,7 +9,7 @@ namespace MovieRaptor.Infrastructure.Shared
     {
         public SearchResultProfile()
         {
-            CreateMap<SearchContainer<SearchMovie>, SearchResult<Domain.Entities.Movie>>();
+            CreateMap<SearchContainer<SearchMovie>, SearchResult<Domain.Movies.Movie>>();
         }
     }
 }

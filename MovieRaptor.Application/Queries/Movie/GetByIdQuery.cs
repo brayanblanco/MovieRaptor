@@ -1,20 +1,20 @@
 ﻿using AutoMapper;
 using MediatR;
-using MovieRaptor.Domain.Interfaces;
+using MovieRaptor.Domain.Movies;
 
 namespace MovieRaptor.Application.Queries.Movie
 {
-    public record GetByIdQuery(int Id) : IRequest<MovieDto>;
+    public record GetByIdMovieDto(int Id, string Title);
 
-    public record MovieDto(int Id, string Title);
+    public record GetByIdQuery(int Id) : IRequest<GetByIdMovieDto>;
 
-    public class GetByIdQueryHandler(IMovieRepository movieRepository, IMapper mapper) : IRequestHandler<GetByIdQuery, MovieDto>
+    public class GetByIdQueryHandler(IMovieRepository movieRepository, IMapper mapper) : IRequestHandler<GetByIdQuery, GetByIdMovieDto>
     {
-        public async Task<MovieDto> Handle(GetByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetByIdMovieDto> Handle(GetByIdQuery request, CancellationToken cancellationToken)
         {
-            var movie = await movieRepository.GetMovieByIdAsync(cancellationToken, request.Id);
-
-            return mapper.Map<MovieDto>(movie);
+            var movie = await movieRepository.GetByIdAsync(request.Id, cancellationToken);
+            
+            return mapper.Map<GetByIdMovieDto>(movie);
         }
     }
 }

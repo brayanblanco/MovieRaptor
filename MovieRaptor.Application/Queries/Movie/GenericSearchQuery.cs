@@ -1,19 +1,21 @@
 ﻿using AutoMapper;
 using MediatR;
-using MovieRaptor.Domain.Interfaces;
+using MovieRaptor.Domain.Movies;
 using MovieRaptor.Domain.Shared;
 
 namespace MovieRaptor.Application.Queries.Movie
 {
-    public record GenericSearchQuery(string Query, int Page) : IRequest<SearchResult<MovieDto>>;
+    public record GenericSearchMovieDto(int Id, string Title);
 
-    public class SearchQueryHandler(IMovieRepository movieRepository, IMapper mapper) : IRequestHandler<GenericSearchQuery, SearchResult<MovieDto>>
+    public record GenericSearchQuery(string Query, int Page) : IRequest<SearchResult<GenericSearchMovieDto>>;
+
+    public class SearchQueryHandler(IMovieRepository movieRepository, IMapper mapper) : IRequestHandler<GenericSearchQuery, SearchResult<GenericSearchMovieDto>>
     {
-        public async Task<SearchResult<MovieDto>> Handle(GenericSearchQuery request, CancellationToken cancellationToken)
+        public async Task<SearchResult<GenericSearchMovieDto>> Handle(GenericSearchQuery request, CancellationToken cancellationToken)
         {
-            var movie = await movieRepository.GenericSearchAsync(cancellationToken, request.Query, request.Page);
-
-            return mapper.Map<SearchResult<MovieDto>>(movie);
+            var movies = await movieRepository.GenericSearchAsync(request.Query, request.Page, cancellationToken);
+            
+            return mapper.Map<SearchResult<GenericSearchMovieDto>>(movies);
         }
     }
 }

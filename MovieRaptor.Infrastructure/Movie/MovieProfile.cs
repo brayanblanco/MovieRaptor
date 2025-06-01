@@ -6,8 +6,8 @@ namespace MovieRaptor.Infrastructure.Movie
     {
         public SearchResultProfile()
         {
-            CreateMap<TMDbLib.Objects.Movies.Movie, Domain.Entities.Movie>();
-            CreateMap<TMDbLib.Objects.Search.SearchMovie, Domain.Entities.Movie>();
+            CreateMap<TMDbLib.Objects.Movies.Movie, Domain.Movies.Movie>();
+            CreateMap<TMDbLib.Objects.Search.SearchMovie, Domain.Movies.Movie>();
         }
     }
 }
