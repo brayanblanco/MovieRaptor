@@ -5,6 +5,6 @@ namespace MovieRaptor.Domain.Users
     public interface IUserRepository
     {
         Task<User> GetByIdAsync(int id, CancellationToken cancellationToken);
-        Task<Guid> CreateAsync(User entity, CancellationToken cancelationToken);
+        Task<int> CreateAsync(User entity, CancellationToken cancelationToken);
     }
 }

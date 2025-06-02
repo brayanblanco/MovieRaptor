@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MovieRaptor.Application.Queries.Movie;
+using MovieRaptor.Application.Movies.Movie.Queries;
 
-namespace MovieRaptor.API.Controllers
+
+namespace MovieRaptor.API.Movies.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

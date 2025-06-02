@@ -2,9 +2,9 @@
 
 namespace MovieRaptor.Infrastructure.Movies.Movie
 {
-    public class SearchResultProfile : Profile
+    public class MovieProfile : Profile
     {
-        public SearchResultProfile()
+        public MovieProfile()
         {
             CreateMap<TMDbLib.Objects.Movies.Movie, Domain.Movies.Movie>();
             CreateMap<TMDbLib.Objects.Search.SearchMovie, Domain.Movies.Movie>();

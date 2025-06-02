@@ -1,7 +1,11 @@
+using Microsoft.EntityFrameworkCore;
 using MovieRaptor.Application;
 using MovieRaptor.Domain.Movies;
+using MovieRaptor.Domain.Users;
 using MovieRaptor.Infrastructure;
 using MovieRaptor.Infrastructure.Movies.Movie;
+using MovieRaptor.Infrastructure.Users;
+using MovieRaptor.Infrastructure.Users.User;
 using TMDbLib.Client;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,8 +20,11 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<ApplicationAssemblyReference>());
 builder.Services.AddAutoMapper(typeof(ApplicationAssemblyReference).Assembly, typeof(InfrastructureAssemblyReference).Assembly);
-builder.Services.AddSingleton(client => new TMDbClient(builder.Configuration["TMDbApiKey"]));
-builder.Services.AddSingleton<IMovieRepository, TMDbMovieRepository>();
+builder.Services.AddScoped(client => new TMDbClient(builder.Configuration["TMDbApiKey"]));
+builder.Services.AddScoped<IMovieRepository, TMDbMovieRepository>();
+builder.Services.AddScoped<IUserRepository, PostgreSqlUserRepository>();
+
+builder.Services.AddDbContextPool<UsersDbContext>(optionBuilder => optionBuilder.UseNpgsql(builder.Configuration.GetConnectionString("UsersConnectionString")));
 
 var app = builder.Build();
 

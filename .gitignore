@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /MovieRaptor.API/apikeys.json
+/MovieRaptor.API/appsettings.Development.json
