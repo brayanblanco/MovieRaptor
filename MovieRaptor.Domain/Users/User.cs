@@ -2,18 +2,21 @@
 {
     public class User
     {
-        public int Id { get; private set; }
-        public string Username { get; private set; }
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
 
-        private User(int id, string username)
+        public string? Name { get; set; }
+
+        private User(string username, string email)
         {
-            Id = id;
             Username = username;
+            Email = email;
         }
 
-        public static User Create(string username)
+        public static User Create(string username, string email)
         {
-            return new User(1, username);
+            return new User(username, email);
         }
     }
 }

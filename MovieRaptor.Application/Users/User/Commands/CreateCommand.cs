@@ -1,10 +1,10 @@
-﻿using AutoMapper;
+﻿using System.ComponentModel.DataAnnotations;
 using MediatR;
 using MovieRaptor.Domain.Users;
 
 namespace MovieRaptor.Application.Users.User.Commands
 {
-    public record CreateUserDTO(string Username);
+    public record CreateUserDTO([Required]string Username, [Required]string Email, string? Name);
 
     public record CreateCommand(CreateUserDTO User) : IRequest<int>;
 
@@ -12,7 +12,12 @@ namespace MovieRaptor.Application.Users.User.Commands
     {
         public async Task<int> Handle(CreateCommand request, CancellationToken cancellationToken)
         {
-            var user = Domain.Users.User.Create(request.User.Username);
+            var userToCreate = request.User;
+            var user = Domain.Users.User.Create(userToCreate.Username, userToCreate.Email);
+
+            if (!string.IsNullOrEmpty(userToCreate.Email))
+                user.Name = userToCreate.Name;
+
             return await userRepository.CreateAsync(user, cancellationToken);
         }
     }

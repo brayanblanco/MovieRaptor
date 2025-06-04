@@ -6,5 +6,7 @@ namespace MovieRaptor.Infrastructure.Users
     public class UsersDbContext(DbContextOptions<UsersDbContext> dbContextOptions) : DbContext(dbContextOptions)
     {
         public DbSet<UserEntity> Users { get; set;  }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)  => modelBuilder.UseIdentityByDefaultColumns();
     }
 }

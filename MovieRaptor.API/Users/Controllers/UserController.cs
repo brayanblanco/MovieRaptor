@@ -27,6 +27,6 @@ namespace MovieRaptor.API.Users.Controllers
             var userId = await _mediator.Send(new CreateCommand(user));
 
             return Ok(userId);
-        }        
+        }
     }
 }
