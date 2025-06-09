@@ -4,7 +4,7 @@ using MovieRaptor.Domain.Users;
 
 namespace MovieRaptor.Application.Users.User.Commands
 {
-    public record CreateUserDTO([Required]string Username, [Required]string Email, string? Name);
+    public record CreateUserDTO([Required]string Username, [Required]string Email, string Password, string? Name);
 
     public record CreateCommand(CreateUserDTO User) : IRequest<int>;
 
@@ -13,7 +13,7 @@ namespace MovieRaptor.Application.Users.User.Commands
         public async Task<int> Handle(CreateCommand request, CancellationToken cancellationToken)
         {
             var userToCreate = request.User;
-            var user = Domain.Users.User.Create(userToCreate.Username, userToCreate.Email);
+            var user = Domain.Users.User.Create(userToCreate.Username, userToCreate.Email, userToCreate.Password);
 
             if (!string.IsNullOrEmpty(userToCreate.Email))
                 user.Name = userToCreate.Name;
