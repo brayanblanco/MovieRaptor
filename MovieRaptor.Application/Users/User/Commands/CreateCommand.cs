@@ -8,7 +8,7 @@ namespace MovieRaptor.Application.Users.User.Commands
 
     public record CreateCommand(CreateUserDTO User) : IRequest<int>;
 
-    public class GetByIdHandler(IUserRepository userRepository) : IRequestHandler<CreateCommand, int>
+    public class CreateHandler(IUserRepository userRepository) : IRequestHandler<CreateCommand, int>
     {
         public async Task<int> Handle(CreateCommand request, CancellationToken cancellationToken)
         {

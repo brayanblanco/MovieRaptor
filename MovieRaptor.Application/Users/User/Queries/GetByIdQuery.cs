@@ -12,9 +12,9 @@ namespace MovieRaptor.Application.Users.User.Queries
     {
         public async Task<GetByIdUserDto> Handle(GetByIdQuery request, CancellationToken cancellationToken)
         {
-            var movie = await userRepository.GetByIdAsync(request.Id, cancellationToken);
+            var user = await userRepository.GetByIdAsync(request.Id, cancellationToken);
 
-            return mapper.Map<GetByIdUserDto>(movie);
+            return mapper.Map<GetByIdUserDto>(user);
         }
     }
 }
