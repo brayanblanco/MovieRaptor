@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using MovieRaptor.Application;
 using MovieRaptor.Domain.Movies;
 using MovieRaptor.Domain.Users;
@@ -25,7 +26,7 @@ builder.Services.AddScoped(client => new TMDbClient(builder.Configuration["TMDbA
 builder.Services.AddScoped<IMovieRepository, TMDbMovieRepository>();
 builder.Services.AddScoped<IUserRepository, PostgreSqlUserRepository>();
 
-builder.Services.AddDbContextPool<UsersDbContext>(optionBuilder => optionBuilder.UseNpgsql(builder.Configuration.GetConnectionString("UsersConnectionString")));
+builder.Services.AddUsersContextPool(builder.Configuration);
 
 var app = builder.Build();
 
@@ -42,5 +43,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.Services.MigrateUsersDb();
 
 app.Run();

@@ -1,6 +1,19 @@
 services:
+  postgres:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+    ports:
+      - "5432:5432"
+    volumes:
+     - db:/var/lib/postgresql/data
   movieraptor.api:
     image: ${DOCKER_REGISTRY-}movieraptorapi
     build:
       context: .
       dockerfile: MovieRaptor.API/Dockerfile
+
+volumes:
+  db: 
