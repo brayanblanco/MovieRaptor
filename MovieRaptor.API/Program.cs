@@ -17,9 +17,10 @@ builder.Configuration.AddJsonFile("apikeys.json");
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<ApplicationAssemblyReference>());
-builder.Services.AddAutoMapper(typeof(ApplicationAssemblyReference).Assembly, typeof(InfrastructureAssemblyReference).Assembly);
+builder.Services.AddAutoMapper(cfg => { cfg.LicenseKey = ""; }, typeof(ApplicationAssemblyReference).Assembly, typeof(InfrastructureAssemblyReference).Assembly);
 builder.Services.AddScoped(client => new TMDbClient(builder.Configuration["TMDbApiKey"]));
 builder.Services.AddScoped<IMovieRepository, TMDbMovieRepository>();
 builder.Services.AddScoped<IUserRepository, PostgreSqlUserRepository>();
@@ -32,6 +33,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
