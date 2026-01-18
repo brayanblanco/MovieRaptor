@@ -1,0 +1,6 @@
+services:
+  movieraptor.api:
+    image: ${DOCKER_REGISTRY-}movieraptorapi
+    build:
+      context: .
+      dockerfile: MovieRaptor.API/Dockerfile
