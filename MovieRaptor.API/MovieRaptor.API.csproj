@@ -7,6 +7,8 @@
     <UserSecretsId>0330cfd7-9012-4fe9-a96f-59c842308c48</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <PublishTrimmed>false</PublishTrimmed>
+    <AllowMissingPrunePackageData>true</AllowMissingPrunePackageData>
   </PropertyGroup>
 
   <ItemGroup>

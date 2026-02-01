@@ -11,8 +11,6 @@ using TMDbLib.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddJsonFile("apikeys.json");
-
 // Add services to the container.
 
 builder.Services.AddControllers();

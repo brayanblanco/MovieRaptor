@@ -8,7 +8,9 @@ services:
       - "8080:8080"
       - "8081:8081"
     volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${USER_SECRETS_PATH}:/home/app/.microsoft/usersecrets:ro
+      - ${USER_SECRETS_PATH}:/root/.microsoft/usersecrets:ro
+      - ${HTTPS_PATH}:/home/app/.aspnet/https:ro
+      - ${HTTPS_PATH}:/root/.aspnet/https:ro
+      - ${DOTNET_CERT_PATH}:/home/app/.dotnet/corefx/cryptography/x509stores/my:ro
+      - ${DOTNET_CERT_PATH}:/root/.dotnet/corefx/cryptography/x509stores/my:ro
