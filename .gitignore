@@ -364,3 +364,4 @@ FodyWeavers.xsd
 /MovieRaptor.API/apikeys.json
 /MovieRaptor.API/appsettings.Development.json
 .env
+.idea
